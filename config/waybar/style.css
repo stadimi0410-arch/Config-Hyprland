@@ -1,0 +1,181 @@
+/* Импорт сгенерированных цветов pywal */
+@import "../../.cache/wal/colors-waybar.css";
+
+/* Переназначение переменных pywal под ваш конфиг */
+@define-color background @color9;
+@define-color second-background @color8; /* Обычно более светлый вариант фона */
+@define-color text @foreground;
+@define-color borders @color12;
+@define-color focused @color11;
+@define-color focused2 @color14;
+@define-color color1 @color1;
+@define-color color2 @color2;
+@define-color color3 @color3;
+@define-color urgent @color9;
+
+/* font declared */
+* {
+    font-family: "Iosevka Nerd Font";
+    font-size: 15px;
+}
+
+#custom-openbracket,
+#custom-closebracket {
+    margin: 0 5px;
+}
+
+/* window configuration */
+window#waybar {
+    background-color: transparent;
+    border-bottom: 0;
+    color: @foreground;
+    transition: background-color 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+/* configuring the modules */
+.modules-left {
+    margin: 10px 0 0 10px;
+    padding: 0 0 0 7px;
+    background-color: @background;
+    border: 2px solid @focused;
+}
+
+.modules-center {
+    margin: 10px 0 0 0;
+    padding: 0 10px 0 10px;
+    background-color: @background;
+    border: 2px solid @focused;
+}
+
+.modules-right {
+    margin: 10px 10px 0 0;
+    padding: 0 10px 0 10px;
+    background-color: @background;
+    border: 2px solid @focused;
+}
+
+button {
+    border: none;
+}
+
+/* menu panel */
+#custom-arch,
+#custom-powerprofile,
+#custom-themeswitcher {
+    padding-right: 10px;
+    padding-left: 5px;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+#custom-arch:hover,
+#custom-powerprofile:hover,
+#custom-themeswitcher:hover {
+    color: @color1;
+}
+
+/* workspace panel */
+#workspaces button {
+    min-width: 0;
+    padding: 0 8px 0 8px;
+    background-color: transparent;
+    color: @text;
+    border-radius: 0;
+}
+
+#workspaces button:hover {
+    background-color: @second-background;
+}
+
+#workspaces button.active {
+    color: @focused2;
+    background-color: @second-background;
+}
+
+#workspaces button.urgent {
+    background-color: @urgent;
+}
+
+/* media player */
+#mpris {
+    margin: 0 0 0 5px;
+    padding: 0 9px;
+    background-color: @background;
+    color: @text;
+}
+
+#mpris.playing {
+    background-color: @color3;
+    border-radius: 2px;
+    color: @text;
+}
+
+/* center module */
+#window {
+    padding: 0 5px;
+}
+
+/* Right Island modules */
+#clock,
+#battery,
+#cpu,
+#memory,
+#custom-clipboard,
+#custom-bluetooth,
+#network,
+#backlight,
+#wireplumber,
+#idle_inhibitor,
+#custom-swaync {
+    padding: 0 10px;
+}
+
+#clock:hover,
+#battery:hover,
+#custom-cpu:hover,
+#custom-clipboard:hover,
+#custom-bluetooth:hover,
+#network:hover,
+#idle_inhibitor:hover,
+#custom-swaync:hover,
+#backlight:hover,
+#wireplumber:hover {
+    color: @color1;
+}
+
+#wireplumber.muted {
+    background-color: @color2;
+    color: @background;
+}
+
+#custom-swaync {
+    font-size: 16px;
+    color: @text;
+}
+
+#battery.charging,
+#battery.plugged {
+    background-color: @focused2;
+    color: @text;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @urgent;
+    color: @text;
+    animation: blink 0.5s steps(12) infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: @second-background;
+        color: @text;
+    }
+}
